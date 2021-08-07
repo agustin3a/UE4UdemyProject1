@@ -45,7 +45,8 @@ void ABlackHoleActor::Tick(float DeltaTime)
 		if (Component && Component->IsSimulatingPhysics()) {
 			FVector DirectionToAttract = GetActorLocation() - Component->GetComponentLocation();
 			FVector Force = DirectionToAttract * ForceStrength;
-			Component->AddForce(Force);
+			//Component->AddForce(Force);
+			Component->AddRadialForce(GetActorLocation(), SphereComp->GetUnscaledSphereRadius(), ForceStrength * -1, RIF_Constant,true);
 		}
 	}
 
